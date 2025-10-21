@@ -17,8 +17,24 @@
     --img-size-a:72px;
     --img-size-b:76px;
   }
-  html,body{height:100%;margin:0;font-family:Inter,Roboto,Segoe UI,Arial;background:var(--bg);color:#071022}
+  html,body{height:100%;margin:0;font-family:Inter,Roboto,Segoe UI,Arial;background:var(--bg);color:#071022;position:relative}
+  /* Watermark background using the IMSS logo (coloca el archivo en assets/imss-logo.png) */
+  body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("assets/imss-logo.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 420px;
+    opacity: 0.06; /* ajustar visibilidad */
+    filter: grayscale(1) contrast(0.9);
+    z-index: 0;
+  }
   .container{max-width:1100px;margin:36px auto;padding:20px;display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
+  /* asegurar que el contenido esté encima del watermark */
+  .container{position:relative;z-index:1}
   .card{
     width:var(--card-w);
     height:var(--card-h);
@@ -96,6 +112,8 @@
   }
   @media print{
     body{background:white}
+    /* ocultar watermark en impresión */
+    body::before{display:none}
     .card{box-shadow:none;border-radius:4px}
   }
 </style>
