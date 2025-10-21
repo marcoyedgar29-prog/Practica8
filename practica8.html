@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Tarjetas de presentación - Practica8</title>
 <style>
-  /* ...existing code... */
   :root{
     --bg:#f5f7fb;
     --card-w:350px; --card-h:200px;
@@ -13,14 +12,55 @@
     --glass: rgba(255,255,255,0.6);
     --accent-a: linear-gradient(135deg,#6a5cff 0%,#2be7ff 100%);
     --accent-b: linear-gradient(135deg,#ff758c 0%,#ff9a6b 100%);
+    --card-border: rgba(7,16,34,0.06);
+    --img-border: rgba(7,16,34,0.08);
+    --img-size-a:72px;
+    --img-size-b:76px;
   }
   html,body{height:100%;margin:0;font-family:Inter,Roboto,Segoe UI,Arial;background:var(--bg);color:#071022}
   .container{max-width:1100px;margin:36px auto;padding:20px;display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
-  .card{width:var(--card-w);height:var(--card-h);border-radius:14px;box-shadow:0 10px 30px rgba(12,20,39,0.08);overflow:hidden;display:flex;align-items:center}
+  .card{
+    width:var(--card-w);
+    height:var(--card-h);
+    border-radius:12px;
+    box-shadow:0 8px 24px rgba(12,20,39,0.06);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    border:1px solid var(--card-border);
+    background:linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
+    padding:12px;
+  }
   /* Diseño A: Moderno con foto/iniciales y detalle en degradado */
-  .card.a{background:linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);position:relative;padding:18px;gap:12px}
-  .a .left{width:44%;height:100%;border-radius:10px;padding:12px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;color:#fff;background:var(--accent-a);box-shadow:inset 0 -20px 40px rgba(0,0,0,0.06)}
-  .avatar{width:72px;height:72px;border-radius:12px;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px}
+  .card.a{position:relative;gap:12px}
+  .a .left{
+    width:44%;
+    height:100%;
+    border-radius:10px;
+    padding:12px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    color:#fff;
+    background:var(--accent-a);
+    box-shadow:inset 0 -20px 40px rgba(0,0,0,0.06);
+  }
+  /* marco para la imagen de la tarjeta A */
+  .avatar-frame{
+    width:var(--img-size-a);
+    height:var(--img-size-a);
+    border-radius:10px;
+    overflow:hidden;
+    background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+    box-shadow:0 6px 18px rgba(11,22,40,0.06), inset 0 -6px 12px rgba(255,255,255,0.04);
+    border:1px solid var(--img-border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .avatar-frame img{width:100%;height:100%;object-fit:cover;display:block}
+  .avatar-initials{font-weight:800;font-size:22px;color:rgba(255,255,255,0.92);padding:6px}
   .badge{margin-top:10px;font-size:12px;opacity:0.95}
   .a .right{padding:6px 6px 6px 4px;display:flex;flex-direction:column;justify-content:center;gap:6px}
   .a .name{font-size:18px;font-weight:800}
@@ -28,8 +68,21 @@
   .info-list{margin-top:8px;display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--muted)}
   .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 8px;border-radius:999px;background:rgba(11,22,40,0.04);font-size:12px}
   /* Diseño B: Minimalista con toque eléctrico y logo */
-  .card.b{background:linear-gradient(135deg, #ffffff 0%, #fcfdff 100%);padding:16px;display:flex;gap:12px;align-items:center}
-  .logo{width:76px;height:76px;border-radius:12px;background:var(--accent-b);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:28px;box-shadow:0 12px 30px rgba(255,89,120,0.08)}
+  .card.b{padding:12px;display:flex;gap:12px;align-items:center}
+  .logo-frame{
+    width:var(--img-size-b);
+    height:var(--img-size-b);
+    border-radius:12px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--accent-b);
+    border:1px solid var(--img-border);
+    box-shadow:0 12px 28px rgba(255,89,120,0.06);
+  }
+  .logo-frame img{width:100%;height:100%;object-fit:cover;display:block}
+  .logo-fallback{font-weight:900;font-size:28px;color:#fff}
   .meta{display:flex;flex-direction:column;gap:4px}
   .meta .name2{font-weight:800;font-size:16px}
   .meta .role2{font-size:13px;color:var(--muted)}
@@ -52,7 +105,11 @@
     <!-- Tarjeta A: Moderno -->
     <article class="card a" aria-label="Tarjeta moderno - Persona A">
       <div class="left" role="region" aria-label="identidad">
-        <div class="avatar" title="Iniciales">AL</div>
+        <!-- Imagen: reemplazar src por archivo local si lo deseas -->
+        <div class="avatar-frame" title="Foto de Alejandra">
+          <img src="https://via.placeholder.com/300x300.png?text=AL" alt="Alejandra López">
+          <!-- Si quieres fallback con iniciales, mantenlo dentro y con estilos .avatar-initials -->
+        </div>
         <div class="badge">Estudio Creativo</div>
       </div>
 
@@ -70,7 +127,10 @@
 
     <!-- Tarjeta B: Minimalista con acento vivo -->
     <article class="card b" aria-label="Tarjeta minimalista - Persona B">
-      <div class="logo" title="Logo">MC</div>
+      <!-- Logo como imagen; reemplaza src por logo real -->
+      <div class="logo-frame" title="Logo de la marca">
+        <img src="https://via.placeholder.com/300x300.png?text=MC" alt="Logo marca Miguel Castro">
+      </div>
       <div class="meta" role="region" aria-label="datos">
         <div class="name2">Miguel Castro</div>
         <div class="role2">Estratega de Marca · Consultor</div>
@@ -81,6 +141,5 @@
   </div>
 
   <div class="hint">Edita los nombres y colores en :root si deseas personalizar. Imprime a escala 100% para formato físico.</div>
-  <!-- ...existing code... -->
 </body>
 </html>
