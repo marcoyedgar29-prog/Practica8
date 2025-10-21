@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tarjetas de presentación - Diseños</title>
+<style>
+  /* Reset y layout */
+  :root{
+    --bg:#f4f6f9; --card-shadow: 0 6px 18px rgba(15,23,42,0.08);
+    --accent1: linear-gradient(135deg,#7b61ff 0%,#2bd6ff 100%);
+    --accent2: #ff6b6b;
+    --muted:#6b7280;
+    --paper:#ffffff;
+    --card-w:350px; --card-h:200px;
+  }
+  html,body{height:100%; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial; background:var(--bg); color:#0f172a}
+  .wrap{max-width:1100px;margin:40px auto;padding:24px;display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
+  /* Tarjeta 1: moderno */
+  .card{width:var(--card-w);height:var(--card-h);border-radius:14px;background:var(--paper);box-shadow:var(--card-shadow);overflow:hidden;position:relative;display:flex;flex-direction:column;}
+  .card.modern{background:linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%), #ffffff;}
+  .card.modern .left{
+    background:var(--accent1); color:#fff; padding:18px; width:45%; height:100%; display:flex;flex-direction:column; align-items:flex-start; justify-content:center;
+  }
+  .card.modern .initials{
+    width:72px;height:72px;border-radius:12px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;
+  }
+  .card.modern .right{padding:18px 18px 18px 12px;display:flex;flex-direction:column;justify-content:center;gap:6px;}
+  .name{font-size:18px;font-weight:700;}
+  .role{font-size:13px;color:var(--muted);}
+  .contact{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+  .dot{width:10px;height:10px;border-radius:50%;background:#fff;opacity:.18;margin-right:8px;display:inline-block;vertical-align:middle}
+  /* Tarjeta 2: minimalista */
+  .card.minimal{display:flex;flex-direction:row;align-items:center;gap:16px;padding:18px;}
+  .logo{width:68px;height:68px;border-radius:10px;background:linear-gradient(135deg,#1dd1a1,#48dbfb);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:26px;box-shadow:0 6px 18px rgba(13,110,253,0.09)}
+  .info{display:flex;flex-direction:column}
+  .info .name2{font-weight:700;font-size:16px}
+  .info .role2{font-size:13px;color:var(--muted)}
+  .info .meta{margin-top:8px;font-size:12px;color:var(--muted)}
+  /* Accents and utilities */
+  .small{font-size:11px;color:var(--muted)}
+  .flex-row{display:flex;align-items:center;gap:10px}
+  /* Responsive / print helper (opcional) */
+  @media print{
+    body{background:white}
+    .wrap{box-shadow:none}
+    .card{box-shadow:none;border-radius:4px}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Tarjeta 1: Moderno, lado izquierdo con color -->
+    <div class="card modern" role="article" aria-label="Tarjeta moderna">
+      <div style="display:flex;height:100%;">
+        <div class="left">
+          <div class="initials" title="Iniciales">AB</div>
+          <div style="margin-top:12px;font-size:12px;opacity:.95">Agencia Creativa</div>
+        </div>
+        <div class="right">
+          <div class="name">Alejandro Blanco</div>
+          <div class="role">Director de Diseño</div>
+          <div class="contact">
+            <div class="flex-row"><span class="dot"></span><span class="small">+34 600 123 456</span></div>
+            <div class="flex-row"><span class="dot"></span><span class="small">alejandro@ejemplo.com</span></div>
+            <div class="flex-row"><span class="dot"></span><span class="small">www.agenciacrear.com</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta 2: Minimalista -->
+    <div class="card minimal" role="article" aria-label="Tarjeta minimalista">
+      <div class="logo">MC</div>
+      <div class="info">
+        <div class="name2">María Cortés</div>
+        <div class="role2">Estratega de Marca</div>
+        <div class="meta">m: +34 612 987 654 · maria@marca.es</div>
+        <div style="margin-top:8px;font-size:11px;color:var(--muted)">LinkedIn / @maricortes · marca.studio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sugerencias: editar textos, cambiar colores en :root o exportar a PDF -->
+</body>
+</html>

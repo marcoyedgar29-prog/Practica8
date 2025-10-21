@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tarjetas de presentación - Practica8</title>
+<style>
+  /* ...existing code... */
+  :root{
+    --bg:#f5f7fb;
+    --card-w:350px; --card-h:200px;
+    --muted:#6b7280;
+    --glass: rgba(255,255,255,0.6);
+    --accent-a: linear-gradient(135deg,#6a5cff 0%,#2be7ff 100%);
+    --accent-b: linear-gradient(135deg,#ff758c 0%,#ff9a6b 100%);
+  }
+  html,body{height:100%;margin:0;font-family:Inter,Roboto,Segoe UI,Arial;background:var(--bg);color:#071022}
+  .container{max-width:1100px;margin:36px auto;padding:20px;display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
+  .card{width:var(--card-w);height:var(--card-h);border-radius:14px;box-shadow:0 10px 30px rgba(12,20,39,0.08);overflow:hidden;display:flex;align-items:center}
+  /* Diseño A: Moderno con foto/iniciales y detalle en degradado */
+  .card.a{background:linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);position:relative;padding:18px;gap:12px}
+  .a .left{width:44%;height:100%;border-radius:10px;padding:12px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;color:#fff;background:var(--accent-a);box-shadow:inset 0 -20px 40px rgba(0,0,0,0.06)}
+  .avatar{width:72px;height:72px;border-radius:12px;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px}
+  .badge{margin-top:10px;font-size:12px;opacity:0.95}
+  .a .right{padding:6px 6px 6px 4px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+  .a .name{font-size:18px;font-weight:800}
+  .a .role{font-size:13px;color:var(--muted)}
+  .info-list{margin-top:8px;display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--muted)}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 8px;border-radius:999px;background:rgba(11,22,40,0.04);font-size:12px}
+  /* Diseño B: Minimalista con toque eléctrico y logo */
+  .card.b{background:linear-gradient(135deg, #ffffff 0%, #fcfdff 100%);padding:16px;display:flex;gap:12px;align-items:center}
+  .logo{width:76px;height:76px;border-radius:12px;background:var(--accent-b);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:28px;box-shadow:0 12px 30px rgba(255,89,120,0.08)}
+  .meta{display:flex;flex-direction:column;gap:4px}
+  .meta .name2{font-weight:800;font-size:16px}
+  .meta .role2{font-size:13px;color:var(--muted)}
+  .meta .contact2{margin-top:6px;font-size:12px;color:var(--muted)}
+  /* Footer small hint */
+  .hint{width:100%;text-align:center;margin-top:8px;font-size:12px;color:var(--muted)}
+  /* Responsive / print tweaks */
+  @media (max-width:760px){
+    .container{padding:14px}
+    .card{transform:scale(0.95)}
+  }
+  @media print{
+    body{background:white}
+    .card{box-shadow:none;border-radius:4px}
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <!-- Tarjeta A: Moderno -->
+    <article class="card a" aria-label="Tarjeta moderno - Persona A">
+      <div class="left" role="region" aria-label="identidad">
+        <div class="avatar" title="Iniciales">AL</div>
+        <div class="badge">Estudio Creativo</div>
+      </div>
+
+      <div class="right" role="region" aria-label="contacto">
+        <div class="name">Alejandra López</div>
+        <div class="role">Directora de Arte · Diseño UX</div>
+
+        <div class="info-list">
+          <div class="chip">📞 +34 600 111 222</div>
+          <div class="chip">✉️ alejandra@estudiocreativo.es</div>
+          <div class="chip">🌐 estudiocreativo.es · @alopdesign</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Tarjeta B: Minimalista con acento vivo -->
+    <article class="card b" aria-label="Tarjeta minimalista - Persona B">
+      <div class="logo" title="Logo">MC</div>
+      <div class="meta" role="region" aria-label="datos">
+        <div class="name2">Miguel Castro</div>
+        <div class="role2">Estratega de Marca · Consultor</div>
+        <div class="contact2">m: +34 611 333 444 · miguel@marca.co</div>
+        <div style="font-size:11px;color:var(--muted)">LinkedIn · @miguelcastro · marca.co</div>
+      </div>
+    </article>
+  </div>
+
+  <div class="hint">Edita los nombres y colores en :root si deseas personalizar. Imprime a escala 100% para formato físico.</div>
+  <!-- ...existing code... -->
+</body>
+</html>
