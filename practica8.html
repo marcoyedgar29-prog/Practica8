@@ -16,6 +16,10 @@
     --img-border: rgba(7,16,34,0.08);
     --img-size-a:72px;
     --img-size-b:76px;
+    /* Paleta de colores adicionales */
+    --cobalt-1: linear-gradient(135deg,#6a5cff 0%,#2be7ff 100%);
+    --coral-1: linear-gradient(135deg,#ff758c 0%,#ff9a6b 100%);
+    --mint-1: linear-gradient(135deg,#4be2b8 0%,#6a9eff 100%);
   }
   html,body{height:100%;margin:0;font-family:Inter,Roboto,Segoe UI,Arial;background:var(--bg);color:#071022;position:relative}
   /* Watermark background using the IMSS logo (coloca el archivo en assets/imss-logo.png) */
@@ -105,6 +109,21 @@
   .meta .contact2{margin-top:6px;font-size:12px;color:var(--muted)}
   /* Footer small hint */
   .hint{width:100%;text-align:center;margin-top:8px;font-size:12px;color:var(--muted)}
+  /* Variantes de color para las tarjetas */
+  .card.color-cobalt{ background: linear-gradient(180deg,#eef2ff 0%, #f7fbff 100%); border-color: rgba(106,92,255,0.12) }
+  .card.color-cobalt .left,
+  .card.color-cobalt .logo-frame{ background: var(--cobalt-1) }
+  .card.color-cobalt .name, .card.color-cobalt .name2{ color:#1e2b87 }
+
+  .card.color-coral{ background: linear-gradient(180deg,#fff6f7 0%, #fffdfb 100%); border-color: rgba(255,117,140,0.12) }
+  .card.color-coral .left,
+  .card.color-coral .logo-frame{ background: var(--coral-1) }
+  .card.color-coral .name, .card.color-coral .name2{ color:#8a1530 }
+
+  .card.color-mint{ background: linear-gradient(180deg,#f3fff9 0%, #fbfffe 100%); border-color: rgba(75,226,184,0.12) }
+  .card.color-mint .left,
+  .card.color-mint .logo-frame{ background: var(--mint-1) }
+  .card.color-mint .name, .card.color-mint .name2{ color:#0f6b4a }
   /* Responsive / print tweaks */
   @media (max-width:760px){
     .container{padding:14px}
@@ -121,7 +140,7 @@
 <body>
   <div class="container">
     <!-- Tarjeta A: Moderno -->
-    <article class="card a" aria-label="Tarjeta moderno - Persona A">
+    <article class="card a color-cobalt" aria-label="Tarjeta moderno - Persona A">
       <div class="left" role="region" aria-label="identidad">
         <!-- Imagen: reemplazar src por archivo local si lo deseas -->
         <div class="avatar-frame" title="Foto de Alejandra">
@@ -144,7 +163,7 @@
     </article>
 
     <!-- Tarjeta B: Minimalista con acento vivo -->
-    <article class="card b" aria-label="Tarjeta minimalista - Persona B">
+    <article class="card b color-coral" aria-label="Tarjeta minimalista - Persona B">
       <!-- Logo como imagen; reemplaza src por logo real -->
       <div class="logo-frame" title="Logo de la marca">
         <img src="https://via.placeholder.com/300x300.png?text=MC" alt="Logo marca Miguel Castro">
